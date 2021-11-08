@@ -16,15 +16,27 @@ public class Carta {
     
 
     public Carta(int id, Palo palo, Valor valor) {
-//    public Carta() {
+
         this.id = id;
         this.palo = palo;
         this.valor = valor;
     }
-    
-    public void generarCarta(int id, int ordinalPalo, int ordinalValor) {
+    public Carta(){
         
-      
+    }
+    
+    public Carta generarCarta(int id, int ordinalPalo, int ordinalValor) {
+        
+        
+      //Con los ordinales saber a que enum pertenece
+        Palo palo =Palo.values()[ordinalPalo];
+        Valor valor = Valor.values()[ordinalValor];
+        
+        Carta carta = new Carta(id,palo,valor);
+        
+        
+        //Lo logre
+        return carta;
     }
     
     
@@ -33,7 +45,8 @@ public class Carta {
     }
 
     public enum Valor {
-        AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, J, Q, K
+        A,K,Q,J,DIEZ,NUEVE,OCHO,SIETE,SEIS,CINCO,CUATRO,TRES,DOS;
+        //AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE,DIEZ,J, Q, K por si acaso¿
     }
 
   

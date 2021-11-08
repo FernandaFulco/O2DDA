@@ -22,7 +22,7 @@ public class Mazo {
     ArrayList<Carta> mazo;
 
     public Mazo() {
-        this.mazo = new ArrayList<>();
+        this.generarMazo();
     }
 
     public ArrayList<Carta> getMazo() {
@@ -33,22 +33,15 @@ public class Mazo {
         this.mazo = mazo;
     }
 
-       public enum Palo {
-        CORAZON, DIAMANTE, PICA, TREBOL
+    public void generarMazo() {
+        int contador = 0;
+        Carta carta = new Carta();
+        for (int i = 0; i < 3; i++) {//Recorrida palos
+            for (int j = 0; j < 12; j++) {//Recorrida valores
+                mazo.add(carta.generarCarta(contador++, i, j));
+            //Agrego al array de mazo las cartas.
+            }
+        }
     }
 
-    public enum Valor {
-        AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, J, Q, K
-    }
-    
-   
 }
-
-// String numero[] = { "As", "Dos", "Tres", "Cuatro", "Cinco", "Seis",
-//         "Siete", "Ocho", "Nueve", "Diez", "Jota", "Reina", "Rey" };
-//      
-//      String palos[] = { "Corazones", "Diamantes", "Tréboles", "Pique" };
-//        for(int cuenta=0;cuenta<52;cuenta++  ){
-//            this.myBaraja.add(new Carta(numero[cuenta%13],palos[cuenta/13]));
-//        }
-//        Collections.shuffle(this.myBaraja);

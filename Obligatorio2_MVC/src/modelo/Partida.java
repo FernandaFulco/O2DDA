@@ -6,23 +6,51 @@
 package modelo;
 
 import java.util.ArrayList;
+import observador.Observable;
 import observador.Observador;
 
 /**
  *
  * @author mariafernandafulco
  */
-public class Partida extends observador.Observable {
+public class Partida extends Observable {
+
     public int idPartida = 0;
     public int cantidadDeJugadores;
     public int valorDeLaApuestaBaseOLuz;
     public ArrayList<Participacion> participaciones = new ArrayList();
     public Mazo mazo;
 
+    public Partida(){
+    
+    }
     public Partida(int cantidadDeJugadores, int valorDeLaApuestaBaseOLuz) {
-        this.idPartida = this.idPartida +1;
+        this.idPartida = this.idPartida + 1;
         this.cantidadDeJugadores = cantidadDeJugadores;
         this.valorDeLaApuestaBaseOLuz = valorDeLaApuestaBaseOLuz;
+    }
+
+    public Boolean AgregarParticipante(Participacion participante) {
+        if (this.hayLugar() && !ExisteEnPartida(participante)) {
+            participaciones.add(participante);
+            avisar(Eventos.nuevaParticipacion);
+            Sistema.getInstancia().avisar(Sistema.Eventos.cambioListaParticipantes);
+            return true;
+        }
+        return false;
+
+    }
+
+    private Boolean hayLugar() {
+        return participaciones.size() == cantidadDeJugadores;
+        //Devuelve si un jugador puede unirse a una partida.
+    }
+    private int JugadoresFaltantes(){
+        return cantidadDeJugadores - participaciones.size();
+    }
+
+    private Boolean ExisteEnPartida(Participacion participante) {
+        return participaciones.contains(participante);
     }
 
     public int getIdPartida() {
@@ -57,29 +85,32 @@ public class Partida extends observador.Observable {
         this.participaciones = participaciones;
     }
 
-    
-    
-    public enum Eventos{cambioValor,salir};
+    public enum Eventos {
+        cambioValor, salir, nuevaParticipacion
+    };
     private Observador expulsador;
-    
+
     public void expulsarAlResto(Observador e) {
-        expulsador=e;
+        expulsador = e;
         avisar(Eventos.salir);
     }
 
     public Observador getExpulsador() {
         return expulsador;
     }
-   
-    public void sumar(){
+
+    public void sumar() {
         idPartida++;
         avisar(Eventos.cambioValor);
     }
-    public boolean restar(){
-        if(idPartida==0) return false;
+
+    public boolean restar() {
+        if (idPartida == 0) {
+            return false;
+        }
         idPartida--;
         avisar(Eventos.cambioValor);
         return true;
     }
-    
+
 }

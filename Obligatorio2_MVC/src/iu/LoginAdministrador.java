@@ -11,6 +11,7 @@ import modelo.Administrador;
 import modelo.Sesion;
 import modelo.Sistema;
 import modelo.Usuario;
+import vistaEscritorio.CasoDeUsoAdmin;
 /**
  *
  * @author mariafernandafulco
@@ -39,6 +40,8 @@ public class LoginAdministrador extends LoginAbstracto {
 //        new IngresarAPartida(null,false,(Sesion)dato).setVisible(true);
 //        new EsperandoInicioDeJuego(null, false).setVisible(true);
 //        Sistema.getInstancia().CrearNuevaPartida();
-        new MonitorearJuegos(null,false,(Administrador)dato).setVisible(true);
+        new CasoDeUsoAdmin(null,false,(Administrador)dato).setVisible(true);
+        //new MonitorearJuegos(null,false,(Administrador)dato).setVisible(true);
+        
     }
 }

@@ -17,4 +17,6 @@ public interface VistaJugarAlPoker {
 
     public void error(String msg);
     
+    public void mostrarJugadoresFaltantes(int faltan);
+    
 }

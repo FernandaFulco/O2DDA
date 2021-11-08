@@ -18,10 +18,10 @@ public class Sistema extends Observable{
     private static Sistema instancia = new Sistema();
 
     public void CrearNuevaPartida() {
-        SistemaPartidas.CrearNuevaPartida();
+        //SistemaPartidas.CrearNuevaPartida();
     }
 
-    public enum Eventos{cambioListaUsuariosConectados,nuevoContactoDeCualquierAgenda};
+    public enum Eventos{cambioListaUsuariosConectados,nuevoContactoDeCualquierAgenda,cambioListaParticipantes};
     
     public static Sistema getInstancia() {
         return instancia;

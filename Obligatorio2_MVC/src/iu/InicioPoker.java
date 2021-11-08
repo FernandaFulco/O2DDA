@@ -13,9 +13,9 @@ import modelo.DatosPrueba;
  * @author mariafernandafulco
  */
 public class InicioPoker {
-//       public static void main(String[] args) {
-//        // TODO code application logic here
-//        DatosPrueba.cargar();
-//        new MenuDesarrollo().setVisible(true);
-//    }
+       public static void main(String[] args) {
+        // TODO code application logic here
+        DatosPrueba.cargar();
+        new MenuDesarrollo().setVisible(true);
+    }
 }
