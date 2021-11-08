@@ -13,7 +13,7 @@ import observador.Observador;
 
 /**
  *
- * @author Dario
+ * @author XD
  */
 public class ControladorJugarAlPoker implements Observador{
     

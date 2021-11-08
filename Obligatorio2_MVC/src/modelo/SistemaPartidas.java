@@ -12,12 +12,21 @@ import modelo.Partida;
  * @author mariafernandafulco
  */
 public class SistemaPartidas {
-    public ArrayList<Partida> listaDePartidas = new ArrayList();
+    public ArrayList<Partida> listaDePartidas = new ArrayList<Partida>();
     public Partida partidaAbierta = null;
     
     
-    public static void CrearNuevaPartida() {
+    
+    
+    public  void CrearNuevaPartida() {
         //Si no existe una partida creada
+        //partidaAbierta.AgregarParticipante(participante)<-----ESTA VARIABLE
+        //validar el agregar participante a partida, consultar(¿puedo recibir en
+        //esta clase el participante?)
+        
+        listaDePartidas.add(partidaAbierta);
+          
+    
         
     }
 

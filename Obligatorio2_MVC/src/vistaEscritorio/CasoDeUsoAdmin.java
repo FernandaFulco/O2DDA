@@ -3,39 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iu;
+package vistaEscritorio;
 
-import modelo.Sesion;
-import observador.Observable;
-import observador.Observador;
-import modelo.Jugador;
-import modelo.Sistema;
-import modelo.SistemaPartidas;
+import controlador.ControladorMonitorearJuegos;
+import controlador.VistaMonitorearJuegos;
+import modelo.Administrador;
+
 /**
  *
- * @author mariafernandafulco
+ * @author guriz
  */
-public class IngresarAPartida extends javax.swing.JFrame implements Observador {
-    
-    private Jugador jugador;
-    private Sesion sesion;
-    /**
-     * Creates new form Partida
-     */
-//    public IngresarAPartida() {
-//        initComponents();
-//    }
+public class CasoDeUsoAdmin extends javax.swing.JFrame implements VistaMonitorearJuegos{
 
-    public IngresarAPartida(java.awt.Frame parent, boolean modal,Sesion s) {
-//         super(parent, modal);
+    /**
+     * Creates new form CasoDeUsoAdmin
+     */
+    private ControladorMonitorearJuegos controladorMonitorearJuegos;
+    
+    public CasoDeUsoAdmin(java.awt.Frame parent,boolean modal,Administrador administrador) {
+        //super(parent, modal);
+        
         initComponents();
-        setLocationRelativeTo(null);
-        sesion = s;
-        //jugador = sesion.getParticipacion().getJugador();
-        //SistemaPartidas.ingresarJugadorAUnaPartida(jugador);
-//        jugador.agreagar(this);
-//        jugador.getAgenda().agregar(this);
-        mostrarTitulo();
+        controladorMonitorearJuegos = new ControladorMonitorearJuegos(this, administrador);
+        
     }
 
     /**
@@ -51,41 +41,45 @@ public class IngresarAPartida extends javax.swing.JFrame implements Observador {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Hola, soy Partida!");
+        jLabel1.setText("XD");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(124, 124, 124)
                 .addComponent(jLabel1)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(84, 84, 84)
                 .addComponent(jLabel1)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    /**
+     * @param args the command line arguments
+     */
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void actualizar(Object evento, Observable origen) {
+    public void mostrarNombreUsuario(String nombreCompleto) {
+      setTitle("ADMINISTRADOR: " + nombreCompleto);
+    }
+
+    @Override
+    public void mostrarPartidasEnCurso() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  private void mostrarTitulo() {
-        setTitle("prueba"/*jugador.getNombreCompleto()*/);// + " - " + 
-//                 jugador.getAgenda().cantidadContactos() + " contacto(s)");
-    }
 }

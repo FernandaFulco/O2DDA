@@ -30,6 +30,7 @@ public class MonitorearJuegos extends javax.swing.JDialog implements VistaMonito
         super(parent, modal);
         initComponents();
         controladorMonitorearJuegos = new ControladorMonitorearJuegos(this, administrador);
+        
     }
 
     /**

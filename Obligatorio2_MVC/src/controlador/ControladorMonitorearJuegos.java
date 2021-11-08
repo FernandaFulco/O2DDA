@@ -32,13 +32,13 @@ public class ControladorMonitorearJuegos implements Observador {
     
     public ControladorMonitorearJuegos(VistaMonitorearJuegos vistaMonitorearJuegos, Administrador administrador) {
         this.vistaMonitorearJuegos = vistaMonitorearJuegos;
-        this.sesion = sesion;
+       /* this.sesion = sesion;
         this.participacion = sesion.getParticipacion();
         this.partida = sesion.getParticipacion().getPartida();
         this.sistemaPartidas = sistema.getSistemaPartidas();
         this.sistemaUsuarios = sistema.getSistemaUsuarios();
         this.administrador = administrador;
-        this.partida.agregar(this);
+        this.partida.agregar(this);*/
         vistaMonitorearJuegos.mostrarNombreUsuario(administrador.getNombreCompleto());
 //        mostrarPartidasEnCurso();
     }
