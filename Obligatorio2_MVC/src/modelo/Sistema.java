@@ -14,12 +14,10 @@ import observador.Observable;
 public class Sistema extends Observable{
     private SistemaUsuarios sistemaUsuarios = new SistemaUsuarios();
     private SistemaPartidas sistemaPartidas = new SistemaPartidas();
-    
+    private ArrayList<Sesion> sesiones = new ArrayList<>();
     private static Sistema instancia = new Sistema();
 
-    public void CrearNuevaPartida() {
-        //SistemaPartidas.CrearNuevaPartida();
-    }
+
 
     public enum Eventos{cambioListaUsuariosConectados,nuevoContactoDeCualquierAgenda,cambioListaParticipantes};
     

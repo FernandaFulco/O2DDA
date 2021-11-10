@@ -19,6 +19,7 @@ public class Partida extends Observable {
     public int cantidadDeJugadores;
     public int valorDeLaApuestaBaseOLuz;
     public ArrayList<Participacion> participaciones = new ArrayList();
+    //lista auxiliar de participantes CONSULTAR
     public Mazo mazo;
 
     public Partida(){
@@ -31,25 +32,24 @@ public class Partida extends Observable {
     }
 
     public Boolean AgregarParticipante(Participacion participante) {
-        if (this.hayLugar() && !ExisteEnPartida(participante)) {
+
             participaciones.add(participante);
             avisar(Eventos.nuevaParticipacion);
             Sistema.getInstancia().avisar(Sistema.Eventos.cambioListaParticipantes);
             return true;
-        }
-        return false;
+
 
     }
 
-    private Boolean hayLugar() {
+    public Boolean hayLugar() {
         return participaciones.size() == cantidadDeJugadores;
         //Devuelve si un jugador puede unirse a una partida.
     }
-    private int JugadoresFaltantes(){
+    public int JugadoresFaltantes(){ 
         return cantidadDeJugadores - participaciones.size();
     }
 
-    private Boolean ExisteEnPartida(Participacion participante) {
+    public Boolean ExisteEnPartida(Participacion participante) {
         return participaciones.contains(participante);
     }
 

@@ -26,6 +26,7 @@ public class LoginJugador extends LoginAbstracto {
     @Override
     public Object invocarLoginLogicaNegocio(String nom, String pwd) {
         Sesion sesion = Sistema.getInstancia().loginJugador(nom, pwd);
+
         return sesion; 
     }
 
@@ -34,7 +35,7 @@ public class LoginJugador extends LoginAbstracto {
         //Ingresar a una Partida
         new IngresarAPartida(null,false,(Sesion)dato).setVisible(true);
         new EsperandoInicioDeJuego(null, false).setVisible(true);
-        Sistema.getInstancia().CrearNuevaPartida();
+
     }
     
 }

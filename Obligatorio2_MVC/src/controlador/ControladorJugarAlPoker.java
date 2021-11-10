@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.util.ArrayList;
 import modelo.Partida;
 import modelo.Sesion;
 import modelo.Sistema;
@@ -21,10 +22,36 @@ public class ControladorJugarAlPoker implements Observador{
     private VistaJugarAlPoker vista;
     private Sistema sistema;
     private Sesion sesion;
+    
+    public ArrayList<Partida> listaDePartidas = new ArrayList<Partida>();
+    public Partida partidaAbierta = null;
+    
+    
+    
+    
+    public  void CrearNuevaPartida(Sesion sesion) {
+        //Si no existe una partida creada
+        //partidaAbierta.AgregarParticipante(participante)<-----ESTA VARIABLE
+        //validar el agregar participante a partida, consultar(¿puedo recibir en
+        //esta clase el participante?)
+        
+        if(!partidaAbierta.ExisteEnPartida(sesion.getParticipacion()))
+            //Exepcion: Debe esperar a la siguiente partida para volver a ingresar
+if(sesion.getParticipacion().getJugador().getSaldo()<partidaAbierta.getValorDeLaApuestaBaseOLuz())
+    //Exepcion: No cuenta con saldo suficiente para unirse a una partida.
+    
+        partidaAbierta.AgregarParticipante(sesion.getParticipacion());
+        if(partidaAbierta.JugadoresFaltantes()==0){
+                           listaDePartidas.add(partidaAbierta);
+                           partidaAbierta = new Partida(3, 25);
+                       }//Contultar
+   vista.mostrarJugadoresFaltantes(partidaAbierta.JugadoresFaltantes());
+    }
 
-    public ControladorJugarAlPoker(Partida modelo, VistaJugarAlPoker vista) {
+    public ControladorJugarAlPoker(Partida modelo, VistaJugarAlPoker vista,Sesion s) {
         this.modelo = modelo;
         this.vista = vista;
+        this.sesion = s;
         modelo.agregar(this);
         mostrarPartida();
     }

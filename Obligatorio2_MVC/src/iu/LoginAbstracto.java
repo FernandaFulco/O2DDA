@@ -130,6 +130,7 @@ public abstract class LoginAbstracto extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Login incorrecto");
         } else {
             dispose();
+            //controlador.ControladorJugarAlPoker.
             ejecutarProximoCasoUso(dato);
         }
     }
