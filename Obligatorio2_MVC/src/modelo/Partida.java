@@ -25,6 +25,8 @@ public class Partida extends Observable {
     public Partida(){
     
     }
+    
+    
     public Partida(int cantidadDeJugadores, int valorDeLaApuestaBaseOLuz) {
         this.idPartida = this.idPartida + 1;
         this.cantidadDeJugadores = cantidadDeJugadores;
@@ -46,11 +48,16 @@ public class Partida extends Observable {
         //Devuelve si un jugador puede unirse a una partida.
     }
     public int JugadoresFaltantes(){ 
-        return cantidadDeJugadores - participaciones.size();
+        return  cantidadDeJugadores - participaciones.size();
     }
 
     public Boolean ExisteEnPartida(Participacion participante) {
-        return participaciones.contains(participante);
+        for (Participacion p : participaciones) {
+            if(p.getJugador().getNombreUsuario().equals(participante.getJugador().getNombreUsuario()))
+                return true;
+        }
+        return false;
+        //return participaciones.contains(participante);
     }
 
     public int getIdPartida() {
@@ -85,9 +92,10 @@ public class Partida extends Observable {
         this.participaciones = participaciones;
     }
 
-    public enum Eventos {
+        public enum Eventos {
         cambioValor, salir, nuevaParticipacion
     };
+        
     private Observador expulsador;
 
     public void expulsarAlResto(Observador e) {

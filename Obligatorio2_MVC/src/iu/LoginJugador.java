@@ -5,7 +5,12 @@
  */
 package iu;
 
+import vistaEscritorio.IngresarAPartida;
+import vistaEscritorio.EsperandoInicioDeJuego;
 import java.awt.Frame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.PartidaException;
 import modelo.Sesion;
 import modelo.Sistema;
 /**
@@ -32,9 +37,15 @@ public class LoginJugador extends LoginAbstracto {
 
     @Override
     public void ejecutarProximoCasoUso(Object dato) {
-        //Ingresar a una Partida
-        new IngresarAPartida(null,false,(Sesion)dato).setVisible(true);
-        new EsperandoInicioDeJuego(null, false).setVisible(true);
+        
+        try {
+            //Ingresar a una Partida
+            new IngresarAPartida(null,false,(Sesion)dato).setVisible(true);
+//            new EsperandoInicioDeJuego(null, false,(Sesion)dato).setVisible(true);
+        } catch (PartidaException ex) {
+            Logger.getLogger(LoginJugador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
     }
     

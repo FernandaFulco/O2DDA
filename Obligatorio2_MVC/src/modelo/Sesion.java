@@ -17,8 +17,15 @@ public class Sesion {
     private Participacion participacion;
     private Jugador jugador;
 
+    public Sesion(){
+        
+    }
+    
+    
     public Sesion(Jugador jugador) {
         this.jugador = jugador;
+        this.fechaHoraConectado = new Date();
+        
     }
 
     public Jugador getJugador() {

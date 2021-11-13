@@ -19,7 +19,7 @@ public class Sistema extends Observable{
 
 
 
-    public enum Eventos{cambioListaUsuariosConectados,nuevoContactoDeCualquierAgenda,cambioListaParticipantes};
+    public enum Eventos{cambioListaUsuariosConectados,cambioListaParticipantes};
     
     public static Sistema getInstancia() {
         return instancia;
@@ -27,9 +27,15 @@ public class Sistema extends Observable{
 
     private Sistema() {
     }
+//    public void agregarSesion(Sesion s){
+//        sesiones.add(s);
+//    }
 
     public void agregarUsuarioJugador(int saldo, String nombreUsuario, String nombreCompleto, String contrasenia) {
         sistemaUsuarios.agregarUsuarioJugador(saldo, nombreUsuario, nombreCompleto, contrasenia);
+    }
+    public void agregarPartida (Sesion s) throws PartidaException{
+        sistemaPartidas.AsignarJugadorAPartida(s);
     }
 
     public Sesion loginJugador(String nombreUsuario, String contrasenia) {
@@ -67,4 +73,6 @@ public class Sistema extends Observable{
     public void logout(Sesion s) {
         sistemaUsuarios.logout(s);
     }
+    
+    
 }

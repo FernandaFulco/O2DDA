@@ -32,13 +32,13 @@ public class ControladorMonitorearJuegos implements Observador {
     
     public ControladorMonitorearJuegos(VistaMonitorearJuegos vistaMonitorearJuegos, Administrador administrador) {
         this.vistaMonitorearJuegos = vistaMonitorearJuegos;
-       /* this.sesion = sesion;
-        this.participacion = sesion.getParticipacion();
-        this.partida = sesion.getParticipacion().getPartida();
-        this.sistemaPartidas = sistema.getSistemaPartidas();
-        this.sistemaUsuarios = sistema.getSistemaUsuarios();
-        this.administrador = administrador;
-        this.partida.agregar(this);*/
+//        this.sesion = new Sesion();
+//        this.participacion = sesion.getParticipacion();
+//        this.partida = sesion.getParticipacion().getPartida();
+//        this.sistemaPartidas = sistema.getSistemaPartidas();
+//        this.sistemaUsuarios = sistema.getSistemaUsuarios();
+//        this.administrador = administrador;
+//        this.partida.agregar(this);
         vistaMonitorearJuegos.mostrarNombreUsuario(administrador.getNombreCompleto());
 //        mostrarPartidasEnCurso();
     }
@@ -54,10 +54,10 @@ public class ControladorMonitorearJuegos implements Observador {
     
     @Override
     public void actualizar(Object evento, Observable origen) {
-        if(evento.equals(Sistema.Eventos.cambioListaUsuariosConectados) || 
+        /*if(evento.equals(Sistema.Eventos.cambioListaUsuariosConectados) || 
              evento.equals(Sistema.Eventos.nuevoContactoDeCualquierAgenda)  ){
             mostrarPartidasEnCurso();
-        }
+        }*/
     }
     public void mostrarDetallesDeUnaPartida(){
         
