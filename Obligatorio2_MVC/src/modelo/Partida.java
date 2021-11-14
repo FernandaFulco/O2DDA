@@ -47,7 +47,11 @@ public class Partida extends Observable {
         return participaciones.size() == cantidadDeJugadores;
         //Devuelve si un jugador puede unirse a una partida.
     }
-    public int JugadoresFaltantes(){ 
+    public void JugadoresFaltantes(){ 
+        avisar(Eventos.nuevaParticipacion);;
+        
+    }
+    public int faltan(){
         return  cantidadDeJugadores - participaciones.size();
     }
 

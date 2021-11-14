@@ -42,7 +42,7 @@ if(sesion.getParticipacion().getJugador().getSaldo()<partidaAbierta.getValorDeLa
     throw new PartidaException("No cuenta con saldo suficiente para unirse a una partida.");
 
         partidaAbierta.AgregarParticipante(sesion.getParticipacion());
-        if(partidaAbierta.JugadoresFaltantes()==0){
+        if(partidaAbierta.faltan()==0){
                            listaDePartidas.add(partidaAbierta);
                            CrearNuevaPartida();
                        }

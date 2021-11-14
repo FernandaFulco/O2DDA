@@ -3,18 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/iu/IngresarAPartida.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/iu/LoginAbstracto.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/controlador/ControladorMonitorearJuegos.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/iu/InicioPoker.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/modelo/Participacion.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/iu/LoginAdministrador.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/vistaEscritorio/CasoDeUsoAdmin.java</file>
+            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/modelo/Partida.java</file>
             <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/iu/LoginJugador.java</file>
+            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/observador/Observador.java</file>
+            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/vistaEscritorio/IngresarAPartida.java</file>
             <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/modelo/SistemaPartidas.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/modelo/Sistema.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/modelo/Sesion.java</file>
-            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/modelo/DatosPrueba.java</file>
+            <file>file:/C:/Users/guriz/Desktop/Obligatorio2_MVC/src/controlador/ControladorJugarAlPoker.java</file>
         </group>
     </open-files>
 </project-private>

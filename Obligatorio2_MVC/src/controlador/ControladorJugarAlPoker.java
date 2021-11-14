@@ -29,6 +29,7 @@ public class ControladorJugarAlPoker implements Observador{
         this.sesion = s;
         modelo.agregar(this);
         mostrarPartida();
+        //MostrarFaltantes();
     }
     public void salir(){
         modelo.quitar(this);
@@ -44,12 +45,15 @@ public class ControladorJugarAlPoker implements Observador{
     public void expulsarAlResto(){
         modelo.expulsarAlResto(this);
     }
-
+    public void contadorFaltantes(){
+        modelo.JugadoresFaltantes();
+    }
     
     @Override
     public void actualizar(Object evento, Observable origen) {
-        if(evento.equals(Partida.Eventos.cambioValor)){
+        if(evento.equals(Partida.Eventos.nuevaParticipacion)){
             mostrarPartida();
+            MostrarFaltantes();
         }
         if(evento.equals(Partida.Eventos.salir)){
             if(modelo.getExpulsador()!=this){
@@ -57,10 +61,12 @@ public class ControladorJugarAlPoker implements Observador{
             }
         }
         if(evento.equals(Sistema.Eventos.cambioListaParticipantes)){
-            vista.mostrarJugadoresFaltantes(Sistema.getInstancia().getSistemaPartidas().partidaAbierta.JugadoresFaltantes());
+            vista.mostrarJugadoresFaltantes(Sistema.getInstancia().getSistemaPartidas().partidaAbierta.faltan());
         }
     }
-
+    private void MostrarFaltantes(){
+        vista.mostrarJugadoresFaltantes(modelo.faltan());
+    }
     private void mostrarPartida() {
         vista.mostrarPartida(modelo.getIdPartida());
     }

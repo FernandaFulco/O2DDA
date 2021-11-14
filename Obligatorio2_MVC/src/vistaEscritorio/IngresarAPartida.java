@@ -5,6 +5,8 @@
  */
 package vistaEscritorio;
 
+import controlador.ControladorJugarAlPoker;
+import controlador.VistaJugarAlPoker;
 import modelo.Sesion;
 import observador.Observable;
 import observador.Observador;
@@ -16,17 +18,13 @@ import modelo.SistemaPartidas;
  *
  * @author mariafernandafulco
  */
-public class IngresarAPartida extends javax.swing.JFrame implements Observador {
+public class IngresarAPartida extends javax.swing.JFrame implements VistaJugarAlPoker  {
     
     private Jugador jugador;
     private Sesion sesion;
     private Sistema sistema;
-    /**
-     * Creates new form Partida
-     */
-//    public IngresarAPartida() {
-//        initComponents();
-//    }
+    private ControladorJugarAlPoker controladorJugarPoker;
+
 
     public IngresarAPartida(java.awt.Frame parent, boolean modal,Sesion s) throws PartidaException {
 //         super(parent, modal);
@@ -34,14 +32,18 @@ public class IngresarAPartida extends javax.swing.JFrame implements Observador {
         setLocationRelativeTo(null);
         sesion = s;
         sistema = Sistema.getInstancia();
-        
-        
         sistema.getSistemaPartidas().AsignarJugadorAPartida(sesion);
+        controladorJugarPoker = new ControladorJugarAlPoker(s.getParticipacion().getPartida(), this, s);
+        
+        
         //jugador = sesion.getParticipacion().getJugador();
         //SistemaPartidas.ingresarJugadorAUnaPartida(jugador);
 //        jugador.agreagar(this);
 //        jugador.getAgenda().agregar(this);
         mostrarTitulo();
+        actualizar(parent, sistema);
+        //mostrarJugadoresFaltantes(s.getParticipacion().getPartida().falta());
+        
     }
 
     /**
@@ -85,14 +87,35 @@ public class IngresarAPartida extends javax.swing.JFrame implements Observador {
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
-    @Override
+    
     public void actualizar(Object evento, Observable origen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        controladorJugarPoker.contadorFaltantes();
+    
     }
 
   private void mostrarTitulo() {
         setTitle(sesion.getJugador().getNombreCompleto());// + " - " + 
-        jLabel1.setText("Faltan: "+sistema.getSistemaPartidas().partidaAbierta.JugadoresFaltantes()+" jugadores");
+        
 //                 jugador.getAgenda().cantidadContactos() + " contacto(s)");
+    }
+
+    @Override
+    public void mostrarPartida(int valor) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void terminar() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void error(String msg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostrarJugadoresFaltantes(int faltan) {
+        jLabel1.setText("Faltan: "+faltan+" jugadores");
     }
 }
