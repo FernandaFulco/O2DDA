@@ -19,7 +19,8 @@ public class Partida extends Observable {
     public int cantidadDeJugadores;
     public int valorDeLaApuestaBaseOLuz;
     public ArrayList<Participacion> participaciones = new ArrayList();
-    //lista auxiliar de participantes CONSULTAR
+    public ArrayList<Participacion> participantesActuales = new ArrayList();
+    
     public Mazo mazo;
 
     public Partida(){
@@ -38,6 +39,7 @@ public class Partida extends Observable {
             participaciones.add(participante);
             avisar(Eventos.nuevaParticipacion);
             Sistema.getInstancia().avisar(Sistema.Eventos.cambioListaParticipantes);
+            participantesActuales = participaciones;
             return true;
 
 
@@ -96,6 +98,9 @@ public class Partida extends Observable {
     public ArrayList<Participacion> getParticipaciones() {
         return participaciones;
     }
+    public ArrayList<Participacion> getParticipantesActivos() {
+        return participantesActuales;
+    } 
 
     public void setParticipaciones(ArrayList<Participacion> participaciones) {
         this.participaciones = participaciones;

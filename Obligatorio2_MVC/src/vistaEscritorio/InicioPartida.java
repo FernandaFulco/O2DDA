@@ -53,7 +53,7 @@ public class InicioPartida extends javax.swing.JFrame  {
         list1 = new java.awt.List();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -219,7 +219,7 @@ public class InicioPartida extends javax.swing.JFrame  {
         this.labelPozo.setText("Valor apuesta: " + partida.valorDeLaApuestaBaseOLuz);
         this.labelSaldo.setText("Saldo: " + sesion.getJugador().getSaldo() + "");
         
-        partida.getParticipaciones().forEach(p -> {
+        partida.getParticipantesActivos().forEach(p -> {
             this.list1.add(p.datosParticipante());
         });
         
