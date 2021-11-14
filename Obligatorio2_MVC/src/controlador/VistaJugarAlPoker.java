@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import modelo.Partida;
+
 /**
  *
  * @author Dario
@@ -18,5 +20,7 @@ public interface VistaJugarAlPoker {
     public void error(String msg);
     
     public void mostrarJugadoresFaltantes(int faltan);
+
+    public void iniciar(Partida modelo);
     
 }

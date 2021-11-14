@@ -6,7 +6,6 @@
 package iu;
 
 import vistaEscritorio.IngresarAPartida;
-import vistaEscritorio.EsperandoInicioDeJuego;
 import java.awt.Frame;
 import java.util.logging.Level;
 import java.util.logging.Logger;

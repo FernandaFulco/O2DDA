@@ -48,7 +48,12 @@ public class Partida extends Observable {
         //Devuelve si un jugador puede unirse a una partida.
     }
     public void JugadoresFaltantes(){ 
-        avisar(Eventos.nuevaParticipacion);;
+        if(faltan()!=0){
+            avisar(Eventos.nuevaParticipacion);
+        }else{
+            avisar(Eventos.EmpezarPartida);
+        }
+        
         
     }
     public int faltan(){
@@ -97,7 +102,7 @@ public class Partida extends Observable {
     }
 
         public enum Eventos {
-        cambioValor, salir, nuevaParticipacion
+        cambioValor, salir, nuevaParticipacion, EmpezarPartida
     };
         
     private Observador expulsador;

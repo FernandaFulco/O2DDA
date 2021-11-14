@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.awt.PopupMenu;
 import java.util.ArrayList;
 
 /**
@@ -44,5 +45,9 @@ public class Participacion {
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
-     
+
+    public String datosParticipante() {
+       return this.jugador.getNombreCompleto();
+    }
+
 }

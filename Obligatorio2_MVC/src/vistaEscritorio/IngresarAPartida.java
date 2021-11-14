@@ -7,10 +7,12 @@ package vistaEscritorio;
 
 import controlador.ControladorJugarAlPoker;
 import controlador.VistaJugarAlPoker;
+import javax.swing.JOptionPane;
 import modelo.Sesion;
 import observador.Observable;
 import observador.Observador;
 import modelo.Jugador;
+import modelo.Partida;
 import modelo.PartidaException;
 import modelo.Sistema;
 import modelo.SistemaPartidas;
@@ -28,7 +30,8 @@ public class IngresarAPartida extends javax.swing.JFrame implements VistaJugarAl
 
     public IngresarAPartida(java.awt.Frame parent, boolean modal,Sesion s) throws PartidaException {
 //         super(parent, modal);
-        initComponents();
+        try {
+             initComponents();
         setLocationRelativeTo(null);
         sesion = s;
         sistema = Sistema.getInstancia();
@@ -43,6 +46,9 @@ public class IngresarAPartida extends javax.swing.JFrame implements VistaJugarAl
         mostrarTitulo();
         actualizar(parent, sistema);
         //mostrarJugadoresFaltantes(s.getParticipacion().getPartida().falta());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Alert", JOptionPane.ERROR_MESSAGE);
+        }
         
     }
 
@@ -56,26 +62,35 @@ public class IngresarAPartida extends javax.swing.JFrame implements VistaJugarAl
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Hola, soy Partida!");
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 51));
+        jLabel2.setText("ESPERANDO INICIO DE JUEGO...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(jLabel1)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         pack();
@@ -85,6 +100,7 @@ public class IngresarAPartida extends javax.swing.JFrame implements VistaJugarAl
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
     
@@ -94,7 +110,7 @@ public class IngresarAPartida extends javax.swing.JFrame implements VistaJugarAl
     }
 
   private void mostrarTitulo() {
-        setTitle(sesion.getJugador().getNombreCompleto());// + " - " + 
+        setTitle("Jugador: "+sesion.getJugador().getNombreCompleto());// + " - " + 
         
 //                 jugador.getAgenda().cantidadContactos() + " contacto(s)");
     }
@@ -116,6 +132,13 @@ public class IngresarAPartida extends javax.swing.JFrame implements VistaJugarAl
 
     @Override
     public void mostrarJugadoresFaltantes(int faltan) {
-        jLabel1.setText("Faltan: "+faltan+" jugadores");
+        jLabel1.setText("Faltan: "+faltan+" jugadores para la partida n°: "+sistema.getSistemaPartidas().listaDePartidas.size());
+    }
+
+    @Override
+    public void iniciar(Partida modelo) {
+        this.setVisible(false);
+        new InicioPartida(modelo,sesion,controladorJugarPoker).setVisible(true);
+       
     }
 }

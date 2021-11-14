@@ -29,10 +29,13 @@ public class ControladorJugarAlPoker implements Observador{
         this.sesion = s;
         modelo.agregar(this);
         mostrarPartida();
-        //MostrarFaltantes();
+        sesion.agregar(this);
     }
     public void salir(){
         modelo.quitar(this);
+    }
+    public void salirJugador(){
+//        sesion.expulsar();
     }
     public void sumar(){
         modelo.sumar();
@@ -55,6 +58,9 @@ public class ControladorJugarAlPoker implements Observador{
             mostrarPartida();
             MostrarFaltantes();
         }
+        if(evento.equals(Partida.Eventos.EmpezarPartida))
+            if(true)
+                vista.iniciar(modelo);
         if(evento.equals(Partida.Eventos.salir)){
             if(modelo.getExpulsador()!=this){
                 vista.terminar();
